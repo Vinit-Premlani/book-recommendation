@@ -23,7 +23,7 @@ def index():
 def recommend_ui():
     return render_template('recommend.html')
 
-@app.route('/recommend_books',methods=['post'])
+@app.route('/recommend_books',methods=['POST'])
 def recommend():
     user_input = request.form.get('user_input')
     index = np.where(pt.index == user_input)[0][0]
@@ -42,6 +42,3 @@ def recommend():
     print(data)
 
     return render_template('recommend.html',data=data)
-
-if __name__ == '__main__':
-    app.run(debug=True)
