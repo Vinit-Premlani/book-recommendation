@@ -1,13 +1,36 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,url_for
 import pickle
 import numpy as np
+import pandas as pd
 
-popular_df = pickle.load(open('popular.pkl','rb'))
-pt = pickle.load(open('pt.pkl','rb'))
-books = pickle.load(open('books.pkl','rb'))
-similarity_scores = pickle.load(open('similarity_scores.pkl','rb'))
+# popular_df = pd.read_pickle('popular.pkl'))
+# pt = pd.read_pickle('pt.pkl'))
+# books = pd.read_pickle('books.pkl'))
+# similarity_scores = pd.read_pickle('similarity_scores.pkl'))
+
+
 
 app = Flask(__name__)
+
+
+# with 'popular.pkl', 'rb') as p:
+#     popular_df = pickle.loads(p)
+
+# with 'pt.pkl', 'rb') as p:
+#     pt = pickle.loads(p)
+
+# with 'books.pkl', 'rb') as p:
+#     books = pickle.loads(p)
+
+# with 'similarity_scores.pkl', 'rb') as p:
+#     similarity_scores = pickle.loads(p)
+
+popular_df = pd.read_pickle('popular.pkl')
+pt = pd.read_pickle('pt.pkl')
+books = pd.read_pickle('books.pkl')
+similarity_scores = pd.read_pickle('similarity_scores.pkl')
+
+
 
 @app.route('/')
 def index():
